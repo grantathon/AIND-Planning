@@ -326,12 +326,12 @@ class PlanningGraph():
             adds S nodes to the current level in self.s_levels[level]
         """
 
-        set_state_nodes = []
+        set_state_nodes = set()
 
         # Add literals
         for node_actions in self.a_levels[level - 1]:
             for node_state in node_actions.effnodes:
-                set_state_nodes.append(node_state)
+                set_state_nodes.add(node_state)
                 node_actions.children.add(node_state)
                 node_state.parents.add(node_actions)
 
